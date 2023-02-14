@@ -1,0 +1,65 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+
+model User {
+  id             Int           @id @default(autoincrement())
+  auth0ID        String       @unique
+  email          String?       @unique
+  password       String?
+  role           Role          @default(USER)
+  profile        Profile?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  kanban         Kanban?
+  verbs          Noun[]
+ 
+ }
+
+ model Kanban {
+  id            Int           @id @default(autoincrement())
+  kanbanObject  Json?
+  auth0         String       @unique
+  user          User          @relation(fields: [auth0], references: [auth0ID])
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+ }
+
+ model Profile {
+  id           Int           @id @default(autoincrement())
+  auth0         String       @unique
+  user         User          @relation(fields: [auth0], references: [auth0ID])
+  firstName    String
+  lastName     String
+  bio          String?
+  profileUrl   String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Noun {
+  id            Int           @id @default(autoincrement())
+  category      String
+  polish_word   String
+  english_word  String
+  image_url     String
+  notes         String
+  auth0         String      
+  user          User          @relation(fields: [auth0], references: [auth0ID])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+

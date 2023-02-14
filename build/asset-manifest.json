@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7544a111.css",
+    "main.js": "/static/js/main.01af545e.js",
+    "static/media/background.png": "/static/media/background.5fc571ccf7c195807c05.png",
+    "static/media/form-background.jpg": "/static/media/form-background.18d9c3b39f0b98baac66.jpg",
+    "static/media/krakow_01.jpg": "/static/media/krakow_01.e60782347ab7bd704af6.jpg",
+    "static/media/flag_icon.jpg": "/static/media/flag_icon.fb58a396d01bd2f2de7d.jpg",
+    "index.html": "/index.html",
+    "main.7544a111.css.map": "/static/css/main.7544a111.css.map",
+    "main.01af545e.js.map": "/static/js/main.01af545e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7544a111.css",
+    "static/js/main.01af545e.js"
+  ]
+}
